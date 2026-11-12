@@ -1,0 +1,24 @@
+Respostas às Questões:
+1. Qual estratégia foi mais rápida? Em quais situações?
+A estratégia do índice invertido foi mais rápida para realizar muitas consultas. A varredura completa foi mais rápida apenas quando realizamos uma única consulta isolada, porque não exige o tempo inicial de construção do índice.
+
+2. A partir de aproximadamente quantas consultas a indexação passou a ser vantajosa?
+A indexação passa a ser vantajosa a partir de aproximadamente 25 consultas. Nesse ponto, o tempo acumulado da varredura completa ultrapassa o custo inicial de construir o índice.
+
+3. Qual é a vantagem de utilizar conjuntos em vez de listas para armazenar as linhas?
+Os conjuntos removem elementos duplicados de forma automática. Eles também executam as operações de união e interseção de forma muito mais rápida que as listas.
+
+4. Qual é a complexidade esperada da busca de uma chave em um dicionário Python?
+A complexidade esperada é O(1). O dicionário utiliza uma tabela hash que permite acesso quase instantâneo.
+
+5. Qual é a complexidade da construção do índice e das operações de união e interseção?
+A construção do índice tem complexidade O(N), onde N é o total de palavras do texto. As operações de interseção e união de conjuntos têm complexidade O(A + B), onde A e B representam o tamanho dos conjuntos.
+
+6. Qual é a principal desvantagem da indexação em relação ao consumo de memória?
+A principal desvantagem é o alto consumo de memória. O índice cria uma nova estrutura de dados que guarda cópias e referências de todas as palavras, o que aumenta muito o espaço utilizado na memória RAM.
+
+Diário de Bordo Resumido (Uso de IA):
+Objetivo: Compreender a estrutura do código do índice invertido e das funções de busca combinada.
+Ação com a IA: Solicitei à IA (Gemini) que gerasse a estrutura inicial do código baseando-se nas regras do projeto (mini-projeto-hash-v2.pdf) e usando uma linguagem simples (padrão ASD-STE100).
+Resultados Obtidos: A IA forneceu o código principal (indice_invertido.py), o script de testes de desempenho (experimentos.py) e ajudou a organizar as respostas teóricas.
+Análise e Aprendizado: A IA sugeriu o uso da biblioteca re e da função re.findall(r'\w+', linha) para ignorar pontuações facilmente. Eu analisei o código gerado para entender como o set.intersection funciona nas consultas do tipo "E" e como o update funciona nas consultas do tipo "OU". Também testei os códigos e ajustei o relatório com os meus próprios resultados de tempo
