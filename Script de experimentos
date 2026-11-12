@@ -1,0 +1,49 @@
+experimentos.py
+
+
+import time
+import re
+from indice_invertido import construir_indice, buscar
+
+def busca_varredura(texto, palavra):
+    linhas_encontradas = []
+    linhas = texto.split('\n')
+    palavra_formatada = palavra.lower()
+    
+    for numero_linha, linha in enumerate(linhas, start=1):
+        palavras = re.findall(r'\w+', linha.lower())
+        if palavra_formatada in palavras:
+            linhas_encontradas.append(numero_linha)
+            
+    return linhas_encontradas
+
+try:
+    with open("texto_teste.txt", "r", encoding="utf-8") as arquivo:
+        texto_grande = arquivo.read()
+except FileNotFoundError:
+    texto_grande = "Este é um texto de teste.\n" * 5000 # Texto falso caso o arquivo não exista.
+
+palavra_teste = "capitu"
+
+inicio_varredura = time.perf_counter()
+for _ in range(1000):
+    busca_varredura(texto_grande, palavra_teste)
+fim_varredura = time.perf_counter()
+tempo_varredura = (fim_varredura - inicio_varredura) * 1000
+
+
+inicio_construcao = time.perf_counter()
+indice = construir_indice(texto_grande)
+fim_construcao = time.perf_counter()
+tempo_construcao = (fim_construcao - inicio_construcao) * 1000
+
+
+inicio_busca_indice = time.perf_counter()
+for _ in range(1000):
+    buscar(indice, palavra_teste)
+fim_busca_indice = time.perf_counter()
+tempo_busca_indice = (fim_busca_indice - inicio_busca_indice) * 1000
+
+print(f"Tempo de 1000 buscas (Varredura): {tempo_varredura:.2f} ms")
+print(f"Tempo de construção do índice: {tempo_construcao:.2f} ms")
+print(f"Tempo de 1000 buscas (Índice): {tempo_busca_indice:.2f} ms")
