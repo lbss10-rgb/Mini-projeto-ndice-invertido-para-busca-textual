@@ -1,0 +1,48 @@
+indice_invertido.py
+
+
+import re
+
+def construir_indice(texto):
+    indice = {}
+    if not texto:
+        return indice
+        
+    linhas = texto.split('\n')
+    for numero_linha, linha in enumerate(linhas, start=1):
+        # A expressão \w+ encontra palavras e ignora pontuação.
+        # .lower() converte tudo para letras minúsculas.
+        palavras = re.findall(r'\w+', linha.lower())
+        for palavra in palavras:
+            if palavra not in indice:
+                indice[palavra] = set()
+            indice[palavra].add(numero_linha)
+    return indice
+
+def buscar(indice, palavra):
+    palavra_formatada = palavra.lower()
+    if palavra_formatada in indice:
+        return sorted(list(indice[palavra_formatada]))
+    return []
+
+def buscar_e(indice, palavras):
+    if not palavras:
+        return []
+    
+    conjuntos = []
+    for palavra in palavras:
+        palavra_formatada = palavra.lower()
+        if palavra_formatada not in indice:
+            return [] # Se uma palavra não existe, a interseção é vazia.
+        conjuntos.append(indice[palavra_formatada])
+        
+    resultado = set.intersection(*conjuntos)
+    return sorted(list(resultado))
+
+def buscar_ou(indice, palavras):
+    resultado = set()
+    for palavra in palavras:
+        palavra_formatada = palavra.lower()
+        if palavra_formatada in indice:
+            resultado.update(indice[palavra_formatada])
+    return sorted(list(resultado))
