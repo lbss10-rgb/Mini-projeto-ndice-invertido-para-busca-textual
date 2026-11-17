@@ -10,8 +10,6 @@ def construir_indice(texto):
         
     linhas = texto.split('\n')
     for numero_linha, linha in enumerate(linhas, start=1):
-        # A expressão \w+ encontra palavras e ignora pontuação.
-        # .lower() converte tudo para letras minúsculas.
         palavras = re.findall(r'\w+', linha.lower())
         for palavra in palavras:
             if palavra not in indice:
@@ -33,7 +31,7 @@ def buscar_e(indice, palavras):
     for palavra in palavras:
         palavra_formatada = palavra.lower()
         if palavra_formatada not in indice:
-            return [] # Se uma palavra não existe, a interseção é vazia.
+            return []
         conjuntos.append(indice[palavra_formatada])
         
     resultado = set.intersection(*conjuntos)
