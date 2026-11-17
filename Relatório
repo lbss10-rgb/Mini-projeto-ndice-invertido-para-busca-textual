@@ -19,6 +19,6 @@ A principal desvantagem é o alto consumo de memória. O índice cria uma nova e
 
 Diário de Bordo Resumido (Uso de IA):
 Objetivo: Compreender a estrutura do código do índice invertido e das funções de busca combinada.
-Ação com a IA: Solicitei à IA (Gemini) que gerasse a estrutura inicial do código baseando-se nas regras do projeto (mini-projeto-hash-v2.pdf) e usando uma linguagem simples (padrão ASD-STE100).
-Resultados Obtidos: A IA forneceu o código principal (indice_invertido.py), o script de testes de desempenho (experimentos.py) e ajudou a organizar as respostas teóricas.
-Análise e Aprendizado: A IA sugeriu o uso da biblioteca re e da função re.findall(r'\w+', linha) para ignorar pontuações facilmente. Eu analisei o código gerado para entender como o set.intersection funciona nas consultas do tipo "E" e como o update funciona nas consultas do tipo "OU". Também testei os códigos e ajustei o relatório com os meus próprios resultados de tempo
+Ação com a IA: Solicitei à IA (Gemini) que fornecesse ajuda acerca de biblitecas para fazer estrutura inicial do código baseando-se nas regras do projeto (mini-projeto-hash-v2.pdf) e usando uma linguagem simples (padrão ASD-STE100).
+Resultados Obtidos: A IA ajudou em tópicos mais dificultosos no código principal (indice_invertido.py), no script de testes de desempenho (experimentos.py) e ajudou a organizar as respostas teóricas.
+Análise e Aprendizado: A IA sugeriu o uso da biblioteca re e da função re.findall(r'\w+', linha) para ignorar pontuações facilmente. Eu analisei o código gerado para entender como o set.intersection funciona nas consultas do tipo "E" e como o update funciona nas consultas do tipo "OU". Também testei os códigos e ajustei o relatório com os meus próprios resultados de tempo.
